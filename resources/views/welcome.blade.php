@@ -1,91 +1,48 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
+        <title>Ship Tracker</title>
         <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
+            .formcontainer {
+                width: 100%;
+            }
+            .textareaContainer {
+                display: block;
+            }
+            textarea {
+                width: 100%;
+                height: 330px;
                 margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
+                padding: 0;
+                border-width: 1;
             }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+        <h1>Ship Tracker</h1>
+        <p>Have anyone within the crew in question go to the dock (on any island). From there, select the "Where are my vessels" option. This will list each and every ship in that crew, as well as the current status of those ships.</p>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
+        <p>Then, use the hot-key commands "Ctrl-A" (to Select All) and then "Ctrl-C" (to Copy All). Then use the command "Ctrl-V" (Paste All) to insert the contents here.</p>
+        <form method="POST" action="/">
+            @csrf
+            <div class="formcontainer">
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Ship Tracker
-                </div>
-
-
+                <label class="textareaContainer">
+                    <textarea name="ships" placeholder="Enter Ship Data Here.">@if($errors->any()){{old('ships')}}@endif</textarea>
+                </label>
             </div>
+
+            <input type="submit" value="Submit">
+
+        </form>
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+            </ul>
         </div>
+        @endif
     </body>
 </html>
