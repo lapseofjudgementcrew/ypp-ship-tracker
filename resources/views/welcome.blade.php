@@ -20,8 +20,10 @@
     </head>
     <body class="antialiased">
         <div id="app">
+            <h1>@{{product}}</h1>
+            <p>@{{description}}</p>
             <div class="relative flex items-top justify-center min-h-screen bg-gray-100 sm:items-center py-4 sm:pt-0">
-                <hello-world/>
+                <hello-world />
             </div>
             <h1>Ship Tracker</h1>
             <p>Have anyone within the crew in question go to the dock (on any island). From there, select the "Where are my vessels" option. This will list each and every ship in that crew, as well as the current status of those ships.</p>

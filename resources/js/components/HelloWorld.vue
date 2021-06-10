@@ -1,10 +1,11 @@
 <template>
-    <h1>{{ product }}</h1>
+    <h1>{{ greeting }}</h1>
+    
 </template>
 <script>
 export default {
     setup: () => ({
-        greeting: 'Hello World from Vue 3!'
+        greeting: 'Hello World from Vue 3!',
         
     })
 }

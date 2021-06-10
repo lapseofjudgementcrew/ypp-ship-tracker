@@ -1,22 +1,21 @@
-import { createApp } from 'vue'
+import { createApp } from 'vue';
 
 import HelloWorld from './components/HelloWorld.vue';
 
 const app = createApp({
-    data() {
+    
+ 
+    setup() {
         return {
-            product: 'Boots',
-            description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. A, asperiores'     
-
+            product: 'Boots', // updated data value //
+            description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, earum.'
         }
     }
 });
-
 // registers our HelloWorld component globally
-app.component('hello-world', HelloWorld);
-
-// mount the app to the DOM
-app.mount('#app');
+// and mount the app to the DOM
+app.component('hello-world', HelloWorld)
+    .mount('#app');
 
 require('./bootstrap');
 

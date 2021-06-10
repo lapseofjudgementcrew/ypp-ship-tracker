@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class ShipController extends Controller
 {
+    function index(){
+        $ships = Ship::All();
+        
+        return view('ships',compact('ships'));
+
+
+    }
     function store(Request $request){
         $ships_input = $request->input('ships');
         // dd($ships_input);
@@ -47,7 +54,7 @@ class ShipController extends Controller
         DB::table('ships')->whereIn('id', $ids_to_delete)->delete();
         DB::table('ships')->insert($ships);
 
-
+        return redirect('ships');
 
     }
 
